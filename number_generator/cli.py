@@ -32,6 +32,11 @@ def generate_numbers_sequence(
         typer.echo(f"output_path received: {output_path}")
         typer.echo(f"random_seed received: {random_seed}")
 
+    #Generate image
+    image = gen_seq(sequence, (min_spacing, max_spacing), image_width, random_seed=random_seed, verbose=verbose)
+
+    #Save image
+    
 
 @app.command("generate-phone-numbers")
 def generate_phone_numbers(

@@ -12,6 +12,7 @@ number-generator = "number_generator.cli:app"
 python = "^3.6"
 typer = {extras = ["all"], version = "^0.4.0"}
 numpy = "1.19.2"
+opencv-python = "3.4.15.55"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
