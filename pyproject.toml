@@ -6,7 +6,7 @@ authors = ["Trevor Wieland <trevor_wieland@mac.com>"]
 readme = "README.MD"
 
 [tool.poetry.scripts]
-number-generator = "number_generator.cli:app"
+number-generator = "number_generator.cli.cli:app"
 
 [tool.poetry.dependencies]
 python = "^3.6"
