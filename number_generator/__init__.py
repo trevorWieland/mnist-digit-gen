@@ -1,0 +1,1 @@
+from .functionality import generate_numbers_sequence
