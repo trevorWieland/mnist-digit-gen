@@ -1,4 +1,5 @@
 from typing import Iterable, Tuple, Optional
+from .dataload import MNIST_Loader
 import numpy as np
 
 def generate_numbers_sequence(
@@ -40,13 +41,12 @@ def generate_numbers_sequence(
 def generate_phone_numbers(
     spacing_range: Tuple[int, int],
     image_width: int,
-    num_images: int,
     random_seed: Optional[int] = None,
     verbose: bool = True
-) -> List[np.ndarray]:
+) -> np.ndarray:
     """
-    Generates a list of images that contain random digits, in the format of
-    Japanese phone numbers.
+    Generates an image that contains random digits, in the format of
+    a Japanese phone number.
 
     Parameters
     ----------
@@ -55,8 +55,6 @@ def generate_phone_numbers(
         between digits. Unit should be pixel.
     image_width:
         specifies the width of the image in pixels.
-    num_images:
-        The integer number of images to create
     random_seed:
         An optional parameter to initialize random number generation
     verbose:
@@ -64,11 +62,11 @@ def generate_phone_numbers(
 
     Returns
     -------
-    A list of images containing the sequences of numbers generated.
+    An image containing the sequence of numbers generated.
 
-    Each image is represented as floating point 32bit numpy arrays with a scale
+    The image is represented as floating point 32bit numpy arrays with a scale
     ranging from 0 (black) to 1 (white), with the first dimension corresponding
     to the height and the second dimension to the width.
     """
 
-    return [np.ones((1,1))]
+    return np.ones((1,1))

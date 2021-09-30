@@ -1,2 +1,2 @@
-from .cli import app
+from .cli.cli import app
 app()

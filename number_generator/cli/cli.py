@@ -1,9 +1,11 @@
-from .functionality import generate_numbers_sequence as gen_seq
-from .functionality import generate_phone_numbers as gen_phone
+from ..script.generate import generate_numbers_sequence as gen_seq
+from ..script.generate import generate_phone_numbers as gen_phone
 
 from typing import List, Tuple, Optional
 
 import typer
+import os
+import cv2
 
 app = typer.Typer()
 
@@ -36,7 +38,7 @@ def generate_numbers_sequence(
     image = gen_seq(sequence, (min_spacing, max_spacing), image_width, random_seed=random_seed, verbose=verbose)
 
     #Save image
-    
+    cv2.imwrite(output_path, image)
 
 @app.command("generate-phone-numbers")
 def generate_phone_numbers(
@@ -62,3 +64,18 @@ def generate_phone_numbers(
         typer.echo(f"num_images received: {num_images}")
         typer.echo(f"output_path received: {output_path}")
         typer.echo(f"random_seed received: {random_seed}")
+
+    #Generate each image and save them
+    for i in range(num_images):
+        #Ensure that each image isn't exactly the same when giving a random seed
+        if random_seed is None:
+            seed = None
+        else:
+            seed = random_seed + i
+
+        #Generate image
+        image = gen_phone((min_spacing, max_spacing), image_width, random_seed=seed, verbose=verbose)
+
+        #Save image
+        output_full = os.path.join(output_path, f"phone_number_{i}.png")
+        cv2.imwrite(output_full, image)
