@@ -49,7 +49,7 @@ def generate_numbers_sequence(
 
     return image
 
-def generate_phone_numbers(
+def generate_phone_number(
     spacing_range: Tuple[int, int],
     image_width: int,
     random_seed: Optional[int] = None,
@@ -88,7 +88,16 @@ def generate_phone_numbers(
 
 def generate_japanese_number(random_seed: Optional[int] = None):
     """
+    Generates a random set of digits in the format of a japanese phone number.
 
+    Parameters
+    ----------
+    random_seed:
+        An optional parameter to initialize random number generation
+
+    Returns
+    -------
+    random_digits, a list of 10 random digits to use in image generation.
     """
 
     rng = np.random.default_rng(random_seed)

@@ -1,5 +1,5 @@
 from ..script.generate import generate_numbers_sequence as gen_seq
-from ..script.generate import generate_phone_numbers as gen_phone
+from ..script.generate import generate_phone_number as gen_phone
 
 from typing import List, Tuple, Optional
 

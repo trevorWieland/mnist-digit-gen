@@ -106,7 +106,6 @@ def pad_image_bounds(
     Returns
     -------
     image, a numpy matrix image with the desired target width.
-
     """
 
     rng = np.random.default_rng(random_seed)
