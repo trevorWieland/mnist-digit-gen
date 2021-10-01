@@ -80,4 +80,19 @@ def generate_phone_numbers(
     to the height and the second dimension to the width.
     """
 
-    return np.ones((1,1))
+    random_digits = generate_japanese_number(random_seed)
+
+    image = generate_numbers_sequence(random_digits, spacing_range, image_width, random_seed=random_seed, verbose=verbose)
+
+    return image
+
+def generate_japanese_number(random_seed: Optional[int] = None):
+    """
+
+    """
+
+    rng = np.random.default_rng(random_seed)
+
+    random_digits = rng.integers(low=0, high=10, size=(10,))
+
+    return random_digits

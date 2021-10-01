@@ -66,16 +66,17 @@ def generate_phone_numbers(
         typer.echo(f"random_seed received: {random_seed}")
 
     #Generate each image and save them
-    for i in range(num_images):
-        #Ensure that each image isn't exactly the same when giving a random seed
-        if random_seed is None:
-            seed = None
-        else:
-            seed = random_seed + i
+    with typer.progressbar(range(num_images), label="Generating") as progress:
+        for i in progress:
+            #Ensure that each image isn't exactly the same when giving a random seed
+            if random_seed is None:
+                seed = None
+            else:
+                seed = random_seed + i
 
-        #Generate image
-        image = gen_phone((min_spacing, max_spacing), image_width, random_seed=seed, verbose=verbose)
+            #Generate image
+            image = gen_phone((min_spacing, max_spacing), image_width, random_seed=seed, verbose=verbose)
 
-        #Save image
-        output_full = os.path.join(output_path, f"phone_number_{i}.png")
-        cv2.imwrite(output_full, image)
+            #Save image
+            output_full = os.path.join(output_path, f"phone_number_{i}.png")
+            cv2.imwrite(output_full, image)
