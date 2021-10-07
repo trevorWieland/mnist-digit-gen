@@ -14,7 +14,7 @@ WORKDIR /code
 
 COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 
-RUN pip install --no-cache-dir -r /code/requirements.txt
+RUN pip install --no-cache-dir -r /code/requirements.txt && apt-get update && apt-get install -y ffmpeg libsm6 libxext6
 
 COPY ./number_generator /code/number_generator
 

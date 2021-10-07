@@ -38,8 +38,17 @@ Upon downloading the source code, you can install the library by opening the cod
 This single command will manage all dependency installation for you, and provide its own built in virtual environment for you.
 After running the installation command above, the package will be installed and available for use.
 
-### Usage as a RESTful API
+### Usage as an API
+Built off of FastAPI, this library also provides a web API for generating images.
 
+To compose this container:
+- Download the source code
+- CD to the root folder of the source code
+- RUN `docker build -t digitgenerator .`
+- RUN `docker run -p 8085:80 digitgenerator`
+- In a browser, go to [localhost:8085/docs](http://localhost:8085/docs) to view the interactive documentation.
+
+In addition to this browser window, the API is now accessible from the ip address you've run this docker image from. Ensure functionality by manually using the web documentation first before relying on it in production.
 
 ## Expansion
 
