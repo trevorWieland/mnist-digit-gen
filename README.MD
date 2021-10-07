@@ -18,9 +18,9 @@ This repo is installable as a python package, with its functionality able to be 
 Upon downloading the source code, you can install the library by opening the code in a terminal and typing:
 
     poetry install
-    
+
 This single command will manage all dependency installation for you, and provide its own built in virtual environment for you.
-After running the installation command above, the package will be installed and available for use. 
+After running the installation command above, the package will be installed and available for use.
 
 This interface provides two main functions:
 - `generate_numbers_sequence`
@@ -34,22 +34,19 @@ After installation of this library as a python package, you are able to use it f
 Upon downloading the source code, you can install the library by opening the code in a terminal and typing:
 
     poetry install
-    
+
 This single command will manage all dependency installation for you, and provide its own built in virtual environment for you.
 After running the installation command above, the package will be installed and available for use.
 
 ### Usage as a RESTful API
 
 
-### Usage as an interactive web page
-
-
 ## Expansion
 
 ### EMNIST
-In addition to the standard MNIST digit dataset, there is an extended dataset known as EMNIST. This dataset is not used by default, 
+In addition to the standard MNIST digit dataset, there is an extended dataset known as EMNIST. This dataset is not used by default,
 as it is much larger than normal MNIST. This extended dataset brings upper and lowercase english characters, as well as a much larger,
-more varied set of images. 
+more varied set of images.
 
 If installed, it will require an additional ~500MB of storage, as well as increased memory use when using the library. This function is
 required to create sequences of characters however, so there is some tradeoff.
