@@ -12,34 +12,63 @@ These images can then be used in the training pipeline of some model, for an aut
 This library relies on poetry as its dependency manager, which is a modern approach to organizing dependencies for python packages.
 You can find more details about it [here](https://python-poetry.org/).
 
-### Usage as a library
-This repo is installable as a python package, with its functionality able to be directly referenced.
+## Installation
 
-Upon downloading the source code, you can install the library by opening the code in a terminal and typing:
+This library supports multiple ways to install. The simplest way is to install using poetry, which is a modern dependency tracker and environment manager for python.
+
+### Installation with poetry
+
+If poetry is already installed on your system, simply cd to the root directory of the code, and run:
 
     poetry install
 
-This single command will manage all dependency installation for you, and provide its own built in virtual environment for you.
-After running the installation command above, the package will be installed and available for use.
+This will create a new poetry-managed virtual environment, with all dependencies installed. You can then open this environment by running:
+
+    poetry shell
+
+Or directly run the script by running
+
+    poetry run number-generator
+    
+For more details about running the code, see below.
+
+### Installation with wheel
+
+In addition to poetry, which is the recommended installation method, a python wheel is provided for installation. To install, simply cownload the .whl file included in the dist folder. Then (assuming you're in the same folder), run:
+
+    pip install number_generator-0.1.0-py3-none-any.whl
+
+This will install the library like any other python package.
+
+## Usage as a library
+
+Assuming you've already got in installed, its now ready to be imported, as:
+
+    from number_generator import generate_numbers_sequence, generate_phone_number
 
 This interface provides two main functions:
 - `generate_numbers_sequence`
 - `generate_phone_number`
 
-These functions
+These functions handle two different ways of image generation, with full type-hints and docstrings explaining their usage.
 
-### Usage from the command line
-After installation of this library as a python package, you are able to use it from the command line as well.
+## Usage from the command line
 
-Upon downloading the source code, you can install the library by opening the code in a terminal and typing:
+Assuming you've already got in installed, this library can be used from the command line in a few ways, depending on installation.
 
-    poetry install
+If you've installed it through poetry, in a poetry virtual environment, you can run:
 
-This single command will manage all dependency installation for you, and provide its own built in virtual environment for you.
-After running the installation command above, the package will be installed and available for use.
+    poetry run number-generator --help
 
-### Usage as an API
-Built off of FastAPI, this library also provides a web API for generating images.
+Otherwise, if installed as a normal python package, you can run:
+
+    python -m number-generator --help
+
+For full information on how to run this from the command line, run one of the above commands to see the help, which will walk you through the script usage. This commandline interface is provided via the `typer` library, and is a modern approach to making auto-documenting CLIs in python.
+
+## Usage as an API
+
+Unlike the other two use-cases, using this as a library does not involve installing the library, but instead involves running a docker container using the included `Dockerfile`.
 
 To compose this container:
 - Download the source code
@@ -50,18 +79,4 @@ To compose this container:
 
 In addition to this browser window, the API is now accessible from the ip address you've run this docker image from. Ensure functionality by manually using the web documentation first before relying on it in production.
 
-## Expansion
-
-### EMNIST
-In addition to the standard MNIST digit dataset, there is an extended dataset known as EMNIST. This dataset is not used by default,
-as it is much larger than normal MNIST. This extended dataset brings upper and lowercase english characters, as well as a much larger,
-more varied set of images.
-
-If installed, it will require an additional ~500MB of storage, as well as increased memory use when using the library. This function is
-required to create sequences of characters however, so there is some tradeoff.
-
-Installation depends on the usage style, see the relevant usage section for more details.
-
-### Image Augmentation
-As this library is primarily focussed on working as a data pipeline for machine learning models, there is also support for many standard
-forms of data augmentation, such as warping, noise, brightness, and many others.
+This API is build using `FastAPI`, a modern API framework in python, that provides plentiful auto-documentation, and many conveniences that other libraries like `flask` don't. 
